@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ExpenseTrackerNew.Models
 {
@@ -6,7 +7,7 @@ namespace ExpenseTrackerNew.Models
     {
         public AppDBContext(DbContextOptions options):base(options)
         {
-
+            Database.Migrate();
         }
 
         public DbSet<Transaction> Transactions { get; set; }
