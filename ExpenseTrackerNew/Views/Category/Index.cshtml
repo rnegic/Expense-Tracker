@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ExpenseTrackerNew.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="AddOrEdit">Создать новую трату</a>
+</p>
+
+<div class="row">
+    <div class="col-md-7">
+        <ejs-grid class="e-grid" id="grdCategories" dataSource="@Model" gridLines="None">
+            <e-grid-columns>
+                <e-grid-column headerText="Категория" field="Title"></e-grid-column>
+                <e-grid-column headerText="Тип" field="Type"></e-grid-column>
+                <e-grid-column headerText="Действия"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b36">
+            <i class="fa-solid fa-shapes fa-2xl"></i>
+        </div>
+    </div>
+</div>
