@@ -42,7 +42,6 @@ namespace ExpenseTrackerNew.Controllers
             return View(category);
         }
 
-        // GET: Category/AddOrEdit
         public IActionResult AddOrEdit(int id=0)
         {
             if(id == 0)
@@ -51,9 +50,6 @@ namespace ExpenseTrackerNew.Controllers
                 return View(_context.Categories.Find(id));
         }
 
-        // POST: Category/AddOrEdit
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddOrEdit([Bind("CategoryId,Title,Icon,Type")] Category category)
@@ -95,7 +91,7 @@ namespace ExpenseTrackerNew.Controllers
         {
             if (_context.Categories == null)
             {
-                return Problem("Entity set 'AppDBContext.Categories'  is null.");
+                return Problem("AppDBContext.Categories = null");
             }
             var category = await _context.Categories.FindAsync(id);
             if (category != null)
