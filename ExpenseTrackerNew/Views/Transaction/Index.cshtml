@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ExpenseTrackerNew.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Транзакции";
+}
+
+<p>
+    <a asp-action="AddOrEdit" asp-route-categoryId="@ViewBag.CategoryId">Добавить транзакцию</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Категория</th>
+            <th>Сумма</th>
+            <th>Заметка</th>
+            <th>Дата</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Category.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Note)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                </tr>
+        }
+    </tbody>
+</table>

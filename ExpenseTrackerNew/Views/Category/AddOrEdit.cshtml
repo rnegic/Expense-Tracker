@@ -1,0 +1,47 @@
+﻿@model ExpenseTrackerNew.Models.Category
+
+@{
+    ViewData["Title"] = "Создать";
+}
+
+<h1>Добавить или изменить</h1>
+
+<h4>Категория</h4>
+<hr />
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+                <div class="mb-3">
+                    <div class='btn-group custom-rbt-group'>
+                        <input type="radio" id="radioleft" name="Type" value="Трата" checked="@(Model.Type == "Expense")" />
+                        <label class="btn btn-outline-primary" for="radioleft">Трата</label>
+                        <input type="radio" id="radiomiddle" name="Type" value="Доход" checked="@(Model.Type == "Income")" />
+                        <label class="btn btn-outline-primary" for="radiomiddle">Доход</label>
+                    </div>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Название" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <a class="btn btn-secondary" asp-action="Index">Назад к списку</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
